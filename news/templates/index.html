@@ -1,0 +1,672 @@
+{% load static %}
+<html>
+<head>
+	<title>  सीकर टाइम्स  </title>
+	<link rel="shortcut icon" type="image/x-icon" href="/static/img/title_icon.jpg">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script>
+		//preloader start here
+		window.onload=function(){
+			document.getElementById('main_loader').style.display="none";
+			document.getElementById('preloader').style.display="block";
+		};
+		
+		function openNav() {
+		  document.getElementById("myNav").style.height = "100%";
+		}
+		
+		function closeNav() {
+		  document.getElementById("myNav").style.height = "0%";
+		}
+		//preloader end
+		</script>
+		<style>
+			#preloader{
+				display:none;
+			}
+			#main_loader{
+				height:100%;
+				width:100%;
+				background-color:#fff6f2;
+			}
+			#loader{
+				height:20%;
+				margin-top:8%;
+				margin-left:38%;
+				width:20%;
+				background-color:;
+				float:left;
+			}
+			#pre_img_1{
+				height:300px;
+				width:300px;
+			}
+			#pre_img_2{
+				margin:0px;
+				height:150px;
+				width:300px;
+			}
+			@media screen and (max-width:800px) {
+				#loader{
+				height:20%;
+				margin-top:22%;
+				margin-left:10%;
+				width:20%;
+				background-color:;
+				float:left;
+			}
+		}
+		
+		</style>
+</head>
+<body>
+<div id="main_loader">
+	<div id="loader">
+		<img id="pre_img_1" src="{{ logo.preloader.url}}">
+		<img id="pre_img_2" src="/static/img/preloader-1.gif">
+	</div>
+</div>
+<div id="preloader">
+	<div class="main">
+		{% include 'header.html' %}
+		<div class="news">
+			<div class="news_left">
+			</div>
+			<div class="news_middle">
+				<div class="new_middle_header">
+					<div class="logo">
+						<div class="logo_1">
+							<img src="{{ logo.logo.url }}">
+						</div>
+						<div class="add_1">
+							<img src="{{logo.poster.url}}">
+						</div>
+					</div>
+					{% include 'menu.html' %}
+				</div>
+				
+				<div class="top_news">
+					<div class="top_news_left">
+						<div class="top_news_left_1">
+							<div class="top_news_left_1_top">
+								<a href="news/{{ top_1.news_slug }}"> 
+									<h3> <span> {{ top_1.title }}: </span> {{ top_1.heading }} </h3> 
+								
+								</a>
+							</div>
+							<div class="top_news_left_1_middle">
+								<img src="{{top_1.image.url}}">
+							</div>
+							<div class="top_news_left_1_bottom">
+								
+							</div>
+						</div>
+						<div class="top_news_left_2">
+							{% for x in top_news %}
+							<div class="top_news_2">
+								<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3> 
+									<span> {{ x.title }}: </span> {{ x.heading }}
+								</h3></a>
+							</div>
+							{% endfor %}
+								
+						</div>
+					</div>
+				
+					<div class="top_news_right">
+						<h3>  मैगजीन  </h3>
+						<h4> {{ magazine.date }} </h4>
+						<img src="{{ magazine.image.url }}">
+						<input type="button" id="magazine_button" value="ई-मैगज़ीन पढ़े ">
+					</div>
+				</div>
+				
+				
+				<div class="top_news_3">
+					<div class="top_news_3_header">
+						<div class="top_news_3_1">
+							<img src="/static/img/st1.png">
+						</div>
+						<div class="top_news_3_2">
+							<h3> देश </h3>
+						</div>
+					</div>
+					
+					<div class="top_news_3_middle">
+						{% for x in top_national_news%}
+						{% if forloop.counter == 1 %}
+						<div class="top_news_3_middle_left">
+							<div class="top_news_3_middle_left_1">
+								<img src="/media/{{ x.image }}">
+							</div>
+							
+							<div class="top_news_3_middle_left_2">
+								<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3> <span> {{ x.title }}:  </span> {{ x.heading }}  <h3></a>
+							</div>
+						</div>
+						{{ break }}
+						{% endif %}
+						{% endfor  %}
+						
+						<div class="top_news_3_middle_right">
+
+							{% for x in top_national_news %}
+							{% if forloop.counter == 2 %}
+							<div class="top_news_3_middle_right_1">
+								<div class="top_news_3_middle_right_1_1">
+									<img src="/media/{{ x.image }}">
+								</div>
+								<div class="top_news_3_middle_right_1_2">
+									<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3> <span> {{ x.title }}:  </span> {{ x.heading }}  <h3></a>
+								</div>
+							</div>
+							{{ break }}
+							{% endif %}
+							{% endfor %}
+
+							{% for x in top_national_news %}
+							{% if forloop.counter == 3 %}
+							<div class="top_news_3_middle_right_1">
+								<div class="top_news_3_middle_right_1_1">
+									<img src="/media/{{ x.image }}">
+								</div>
+								<div class="top_news_3_middle_right_1_2">
+									<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3> <span>  {{ x.title }}:  </span> {{ x.heading }} </h3></a>
+								</div>
+							</div>
+							{{ break }}
+							{% endif %}
+							{% endfor %}
+							
+							{% for x in top_national_news %}
+							{% if forloop.counter == 4 %}
+							<div class="top_news_3_middle_right_1">
+								<div class="top_news_3_middle_right_1_1">
+									<img src="/media/{{ x.image }}">
+								</div>
+								<div class="top_news_3_middle_right_1_2">
+									<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3> <span>  {{ x.title }}:  </span> {{ x.heading }} </h3></a>
+								</div>
+							</div>
+							{{ break }}
+							{% endif %}
+							{% endfor %}
+
+						</div>
+					</div>
+					
+					<div class="top_news_3_bottom">
+						<div class="top_news_3_bottom_1">
+							<a style="text-decoration:none;color:#f00000" href="national"><h3> और भी  </h3></a>
+						</div>
+						<div class="top_news_3_bottom_2">
+							<img src="/static/img/5176.png">
+						</div>
+					</div>
+					
+				</div>
+				
+				<div class="top_news_4">
+					<div class="top_news_4_header">
+						<div class="top_news_3_1">
+							<img src="/static/img/st1.png">
+						</div>
+						<div class="top_news_3_2">
+							<h3>  राजनीति  </h3>
+						</div>
+					</div>
+					<div class="top_news_4_middle">
+						
+						{% for x in top_politics_news %}
+						{% if forloop.counter == 1 %}
+						<div class="top_news_4_middle_left">
+							<div class="container">
+								<img src="/media/{{ x.image }}" alt="Notebook" style="width:100%;">
+								
+								<div class="content">
+									<a style="text-decoration:none;color:#fff" href="news/{{ x.news_slug }}"><p> {{ x.heading }}  </p></a>
+								
+								</div>
+							</div>
+						</div>
+						{{ break }}
+						{% endif %}
+						{% endfor %}
+						
+						
+						<div class="top_news_4_middle_right">
+
+							{% for x in top_politics_news %}
+							{% if forloop.counter == 2 %}
+							<div class="top_news_4_middle_right_1">
+								<div class="top_news_4_middle_right_1_1">
+									<img src="/media/{{ x.image }}">
+								</div>
+								<div class="top_news_4_middle_right_1_2">
+									<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3><span style="color:orange"> {{ x.title }}:  </span>  {{ x.heading }} </h3></a>
+								</div>
+							</div>
+							{{ break }}
+							{% endif %}
+							{% endfor %}
+							
+							{% for x in top_politics_news %}
+							{% if forloop.counter == 3 %}
+							<div class="top_news_4_middle_right_1">
+								<div class="top_news_4_middle_right_1_1">
+									<img src="/media/{{ x.image }}">
+								</div>
+								<div class="top_news_4_middle_right_1_2">
+									<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3> <span style="color:orange"> {{ x.title }}:  </span> {{ x.heading }} </h3></a>
+								</div>
+							</div>
+							{{ break }}
+							{% endif %}
+							{% endfor %}
+							
+							{% for x in top_politics_news %}
+							{% if forloop.counter == 4 %}
+							<div class="top_news_4_middle_right_1">
+								<div class="top_news_4_middle_right_1_1">
+									<img src="/media/{{ x.image }}">
+								</div>
+								<div class="top_news_4_middle_right_1_2">
+									<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3> <span style="color:orange">  {{ x.title }}:  </span> {{ x.heading }} </h3></a>
+								</div>
+							</div>
+							{{ break }}
+							{% endif %}
+							{% endfor %}
+
+						</div>
+					</div>
+					<div class="top_news_4_bottom">
+						<div class="top_news_4_bottom_1">
+							<a style="color:#f00000;text-decoration:none;" href="politics"><h3> और भी  </h3></a>
+						</div>
+						<div class="top_news_4_bottom_2">
+							<img src="/static/img/5176.png">
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div class="top_news_5">
+					<div class="top_news_5_header">
+						<div class="top_news_5_header_1">
+							<div class="top_news_5_1_1">
+								<img src="/static/img/st1.png">
+							</div>
+							<div class="top_news_5_1_2">
+								<h3> स्पोर्ट्स </h3>
+							</div>
+						</div>
+						<div class="top_news_5_header_1">
+						</div>
+					</div>
+					
+					{% for x in top_sports_news %}
+					{% if forloop.counter == 1 %}
+					<div class="top_news_5_1">
+						<div class="top_news_5_1_5">
+							<img src="/media/{{ x.image }}">
+						</div>
+						<div class="top_news_5_1_6">
+							<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3>  <span style="color:orange">  {{ x.title }}:  </span>{{ x.heading }} </h3></a>
+						</div>
+					</div>
+					{{ break }}
+					{% endif %}
+					{% endfor %}
+					
+					{% for x in top_sports_news %}
+					{% if forloop.counter == 2 %}
+					<div class="top_news_5_1">
+						<div class="top_news_5_1_5">
+							<img src="/media/{{ x.image }}">
+						</div>
+						<div class="top_news_5_1_6">
+							<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3>  <span style="color:green">  {{ x.title }}:  </span>{{ x.heading }} </h3></a>
+						</div>
+					</div>
+					{{ break }}
+					{% endif %}
+					{% endfor %}
+
+					<div class="top_news_5_bottom">
+						<div class="top_news_5_bottom_1">
+						</div>
+						<div class="top_news_5_bottom_2">
+							<div class="top_news_5_bottom_1_1">
+								<a style="color:#f00000;text-decoration:none;" href="sports"><h3> और भी  </h3></a>
+							</div>
+							<div class="top_news_5_bottom_2_1">
+								<img src="/static/img/5176.png">
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div class="top_videos">
+					<div class="top_videos_1">
+						<div class="top_videos_1_header">
+							<div class="top_news_3_1">
+								<img src="/static/img/video_icon.png">
+							</div>
+							<div class="top_news_3_2">
+								<h3>  वीडियो  </h3>
+							</div>
+						</div>
+						{% for x in video %}
+						{% if forloop.counter == 1 %}
+						<div class="top_videos_1_1">	
+							<iframe width="100%" height="100%" style="border-radius:5px;" src="https://www.youtube.com/embed/{{ x.video_id }}">
+							</iframe>
+						</div>
+						{{ break }}
+						{% endif %}
+						{% endfor %}
+
+						{% for x in video %}
+						{% if forloop.counter == 2 %}
+						<div class="top_videos_1_2">
+							<div class="top_videos_1_2_top_1">
+								<iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ x.video_id }}">
+								</iframe>
+						</div>
+						{{ break }}
+						{% endif %}
+						{% endfor %}
+
+						{% for x in video %}
+						{% if forloop.counter == 3 %}
+						<div class="top_videos_1_2_top_2">
+							<iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ x.video_id }}">
+							</iframe>
+						</div>
+						{{ break }}
+						{% endif %}
+						{% endfor %}
+
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				
+				
+				<div style="border-bottom:1px solid #dcdcdc;" class="top_news_5">
+					<div class="top_news_5_header">
+						<div class="top_news_5_header_1">
+							<div class="top_news_5_1_1">
+								<img src="/static/img/st1.png">
+							</div>
+							<div class="top_news_5_1_2">
+								<h3> करिअर </h3>
+							</div>
+						</div>
+						<div class="top_news_5_header_1">
+							<div class="top_news_5_1_1">
+								<img src="/static/img/st1.png">
+							</div>
+							<div class="top_news_5_1_2">
+								<h3> विदेश </h3>
+							</div>
+						</div>
+					</div>
+					
+			
+					
+					<div class="top_news_5_1">
+						<div class="top_news_5_1_5">
+							<img src="/media/{{ top_carrier_news.image }}">
+						</div>
+						<div class="top_news_5_1_6">
+							<a style="text-decoration:none;color:#191919" href="news/{{ top_carrier_news.news_slug }}"><h3>  <span style="color:orange">  {{ top_carrier_news.title }}:  </span>{{ top_carrier_news.heading}} </h3></a>
+						</div>
+					</div>
+					
+					<div class="top_news_5_1">
+						<div class="top_news_5_1_5">
+							
+							<img src="/media/{{ top_international_news.image }}">
+						</div>
+						<div class="top_news_5_1_6">
+							<a style="text-decoration:none;color:#191919" href="news/{{ top_international_news.news_slug }}"><h3>  <span style="color:green">  {{ top_international_news.title }}:  </span>{{ top_international_news.heading }}</h3></a>
+						</div>
+					</div>
+					<div class="top_news_5_bottom">
+						<div class="top_news_5_bottom_1">
+							<div class="top_news_5_bottom_1_1">
+								<h3> <a style="text-decoration:none;color:#f00000;" href="carrier"> और भी  </a></h3>
+							</div>
+							<div class="top_news_5_bottom_2_1">
+								<img src="/static/img/5176.png">
+							</div>
+						</div>
+						<div class="top_news_5_bottom_2">
+							<div class="top_news_5_bottom_1_1">
+								<h3> <a style="text-decoration:none;color:#f00000;" href="international"> और भी  </a></h3>
+							</div>
+							<div class="top_news_5_bottom_2_1">
+								<img src="/static/img/5176.png">
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div class="top_news_5">
+					<div class="top_news_5_header">
+						<div class="top_news_5_header_1">
+							<div class="top_news_5_1_1">
+								<img src="/static/img/st1.png">
+							</div>
+							<div class="top_news_5_1_2">
+								<h3> मनोरंजन </h3>
+							</div>
+						</div>
+						<div class="top_news_5_header_1">
+							<div class="top_news_5_1_1">
+								<img src="/static/img/st1.png">
+							</div>
+							<div class="top_news_5_1_2">
+								<h3> राजस्थान </h3>
+							</div>
+						</div>
+					</div>
+					
+					<div class="top_news_5_1">
+						<div class="top_news_5_1_5">
+							<img src="/media/{{ top_entertainment_news.image }}">
+						</div>
+						<div class="top_news_5_1_6">
+							<a style="text-decoration:none;color:#191919" href="news/{{ top_entertainment_news.news_slug }}"><h3>  <span style="color:orange">  {{ top_entertainment_news.title}}:  </span>{{ top_entertainment_news.heading}}</h3></a>
+						</div>
+					</div>
+					
+					<div class="top_news_5_1">
+						<div class="top_news_5_1_5">
+							<img src="/media/{{ top_rajasthan_news.image }}">
+						</div>
+						<div class="top_news_5_1_6">
+							<a style="text-decoration:none;color:#191919" href="news/{{ top_rajasthan_news.news_slug }}"><h3>  <span style="color:green">  {{ top_rajasthan_news.title }}:  </span> {{ top_rajasthan_news.heading }} </h3></a>
+						</div>
+					</div>
+					<div class="top_news_5_bottom">
+						<div class="top_news_5_bottom_1">
+							<div class="top_news_5_bottom_1_1">
+								<h3><a style="text-decoration:none;color:#f00000;" href="cinema"> और भी </a> </h3>
+							</div>
+							<div class="top_news_5_bottom_2_1">
+								<img src="/static/img/5176.png">
+							</div>
+						</div>
+						<div class="top_news_5_bottom_2">
+							<div class="top_news_5_bottom_1_1">
+								<h3><a style="text-decoration:none;color:#f00000;" href="rajasthan">  और भी  </a></h3>
+							</div>
+							<div class="top_news_5_bottom_2_1">
+								<img src="/static/img/5176.png">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- <?php include 'footer.php'; ?> -->
+			{% include 'footer.html' %}
+
+			</div>
+			<div class="news_right">
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="main_mob">
+		{% include 'mobile_header.html' %}
+		{% for x in news %}
+		{% if forloop.counter == 1%}
+		<div class="mobile_top_news_1">
+			<div class="mobile_top_news_1_1">
+				<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3> <span> {{ x.title }}: </span> {{ x.heading }} </h3></a>
+			</div>
+			<div class="mobile_top_news_1_2">
+				<img src="/media/{{ x.image}}">
+			</div>
+		</div>
+		{{ break }}
+		{% endif %}
+		{% endfor %}
+
+		
+		{% for x in news %}
+		{% if forloop.counter > 2 and forloop.counter < 9 %}
+		<div class="mobile_top_news_2">
+			<div class="mobile_top_news_2_1">
+				<div class="mobile_top_news_2_1_1">
+					<img src="/media/{{ x.image }}">
+				</div>
+				<div class="mobile_top_news_2_1_2">
+					<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3><span style="color:{% cycle 'green' 'orange' %}"> {{x.title}}:  </span>  {{x.heading}} </h3></a>
+				</div>
+			</div>
+			<div class="mobile_top_news_2_2">
+				<div class="mobile_top_news_2_2_left">
+					<h5> राजस्थान डायरी  </h5> 
+				</div>
+				<div class="mobile_top_news_2_2_right">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="{{x.title}} <br> {{ x.heading }} <br> https://rajasthandiary.in/news/news/{{x.news_slug}}">
+						<a class="a2a_button_whatsapp"></a>
+						<a class="a2a_button_facebook"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
+		{% if forloop.counter == 8%}
+			{{ break }}
+		{% endif %}
+		{% endif %}
+		{% endfor %}
+		
+		
+		<div class="mobile_top_video">
+			<div class="mobile_top_video_header">
+				<div class="mobile_top_video_header_1">
+					<img src="/static/img/video_icon.png">
+				</div>
+				<div class="mobile_top_video_header_2">
+					<h3> वीडियो </h3>
+				</div>
+			</div>
+			
+
+			{% for x in video %}
+			{% if forloop.counter == 1 %}
+			<div class="mobile_top_video_1">
+				<iframe width="100%" height="100%" style="border-radius:5px;" src="https://www.youtube.com/embed/{{ x.video_id }}">
+				</iframe>
+			</div>
+			{{ break }}
+			{% endif %}
+			{% endfor %}
+			
+			{% for x in video %}
+			{% if forloop.counter == 2 %}
+			<div class="mobile_top_video_2">
+				<iframe width="100%" height="100%" style="border-radius:5px;" src="https://www.youtube.com/embed/{{ x.video_id }}">
+				</iframe>
+			</div>
+			{{ break }}
+			{% endif %}
+			{% endfor %}
+			
+			{% for x in video %}
+			{% if forloop.counter == 3 %}
+			<div class="mobile_top_video_3">
+				<iframe width="100%" height="100%" style="border-radius:5px;" src="https://www.youtube.com/embed/{{ x.video_id }}">
+				</iframe>
+			</div>
+			{{ break }}
+			{% endif %}
+			{% endfor %}
+		</div>
+		
+		
+		{% for x in news %}
+		{% if forloop.counter > 8 and forloop.counter <= 60 %}
+		<div class="mobile_top_news_2">
+			<div class="mobile_top_news_2_1">
+				<div class="mobile_top_news_2_1_1">
+					<img src="/media/{{ x.image }}">
+				</div>
+				<div class="mobile_top_news_2_1_2">
+					<a style="text-decoration:none;color:#191919" href="news/{{ x.news_slug }}"><h3><span style="color:{% cycle 'green' 'orange' %}">  {{ x.title }}:  </span>  {{ x.heading }} </h3></a>
+				</div>
+			</div>
+			<div class="mobile_top_news_2_2">
+				<div class="mobile_top_news_2_2_left">
+					<h5> राजस्थान डायरी  </h5> 
+				</div>
+				<div class="mobile_top_news_2_2_right">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://rajasthandiary.in">
+						<a class="a2a_button_whatsapp"></a>
+						<a class="a2a_button_facebook"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
+		{% if forloop.counter == 61  %}
+			{{ break }}
+		{% endif %}
+		{% endif %}
+		{% endfor %}
+		
+	</div>
+</div>
+	<script>
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "40%";
+}
+
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+
+</script>
+
+</body>
+</html>

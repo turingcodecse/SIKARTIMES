@@ -1,0 +1,17 @@
+<div class="menu">
+    <ul>
+        <li><a {% if request.path == '/' or request.path == '/news/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/"><i class="fa fa-home"></i> होम </a></li>
+        <li><a {% if request.path|slice:"6:" == 'sikar/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/sikar/">सीकर </a></li>
+        <li><a {% if request.path|slice:"6:" == 'rajasthan/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/rajasthan/">राजस्थान</a></li>
+        <li><a {% if request.path|slice:"6:" == 'national/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/national">देश</a></li>
+        <li><a {% if request.path|slice:"6:" == 'international/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/international">विदेश</a></li>
+        <li><a {% if request.path|slice:"6:" == 'politics/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/politics">राजनीति</a></li>
+        <li><a {% if request.path|slice:"6:" == 'sports/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/sports">स्पोर्ट्स </a></li>
+        <li><a {% if request.path|slice:"6:" == 'entertainmnet/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/entertainment">मनोरंजन </a></li>
+        <li><a {% if request.path|slice:"6:" == 'magazine/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/magazine">मैगजीन</a></li>
+        <li><a {% if request.path|slice:"6:" == 'video/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/video">वीडियो</a></li>
+        <li><a {% if request.path|slice:"6:" == 'photo/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/photo">फोटो</a></li>
+        <li><a {% if request.path|slice:"6:" == 'carrier/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/carrier">करिअर</a></li>
+        <li><a {% if request.path|slice:"6:" == 'contact/' %} class="active" {% endif %} href="http://127.0.0.1:8000/news/contact">संपर्क </a></li>
+    </ul>
+</div>

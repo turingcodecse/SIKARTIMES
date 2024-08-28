@@ -1,0 +1,99 @@
+<?php 
+	include 'config.php';
+	error_reporting(0);
+?>
+<html>
+<head>
+	<title>  सीकर टाइम्स </title>
+	<link rel="shortcut icon" type="image/x-icon" href="/static/img/title_icon.jpg">
+	<link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div class="main">
+		{% include 'header.html' %}
+			<div class="news">
+			<div class="news_left">
+			</div>
+			<div class="news_middle">
+				<div class="new_middle_header">
+					<div class="logo">
+						<div class="logo_1">
+							<img src="{{logo.logo.url}}">
+						</div>
+						<div class="add_1">
+							<img src="{{logo.poster.url}}">
+						</div>
+					</div>
+					{% include 'menu.html' %}
+				</div>
+				<div class="f_news_left_header">
+						<div class="f_news_left_header_left">
+							<img src="/static/img/photo.png">
+						</div>
+						<div class="f_news_left_header_right">
+							<h3> फोटो </h3>
+						</div>
+				</div>
+				{% for x in photo %}
+				{% autoescape off %}
+				<div class="photo">
+					<div class="container">
+						<img src="/media/{{x.image}}" alt="Notebook" style="width:100%;">
+								
+						<div class="content">
+							<p> {{ x.title }}  </p>
+								
+						</div>
+					</div>
+				</div>
+				{% endautoescape %}
+				{% endfor %}
+			{% include 'footer.html' %}
+			</div>
+			<div class="news_right">
+			</div>
+	</div>
+</div>
+
+
+
+<div class="main_mob">
+		{% include 'mobile_header.html' %}
+		<div class="f_news_left_header">
+						<div class="f_news_left_header_left">
+							<img src="/static/img/photo.png">
+						</div>
+						<div class="f_news_left_header_right">
+							<h3> फोटो </h3>
+						</div>
+		</div>
+		
+					
+				{% for x in photo %}
+				<div class="photo">
+					<div class="container">
+						<img src="{{ x.image|slice:"4:" }}" alt="Notebook" style="width:100%;">
+								
+						<div class="content">
+							<p> {{ x.title }} </p>
+								
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+		
+	</div>
+<script>
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "40%";
+}
+
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+
+</script>
+</body>
+</html>

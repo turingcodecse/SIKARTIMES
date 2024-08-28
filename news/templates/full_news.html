@@ -1,0 +1,123 @@
+<html>
+<head>
+	<title>  सीकर टाइम्स  </title>
+	<link rel="shortcut icon" type="image/x-icon" href="/static/img/title_icon.jpg">
+	<link rel="stylesheet" href="/static/css/style.css" type="text/css" media="all">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div class="main">
+		{% include 'header.html' %}
+			<div class="news">
+			<div class="news_left">
+			</div>
+			<div class="news_middle">
+				<div class="new_middle_header">
+					<div class="logo">
+						<div class="logo_1">
+							<img src="{{ logo.logo.url }}">
+						</div>
+						<div class="add_1">
+							<img src="{{logo.poster.url}}">
+						</div>
+					</div>
+					{% include 'menu.html' %}
+				</div>
+				{% for x in fullnews %}
+				{% autoescape off %}
+				<div class="f_news_left">
+					<div class="f_news_left_top">
+						<div class="f_news_left_top_1">
+							<h3>  <span style="color:orange"> {{ x.title }}:  </span> {{ x.heading }} </h3>
+						</div>
+						<div class="f_news_left_top_2">
+							<h3> {{ x.datetime }} </h3>
+						</div>
+					</div>
+					<div class="f_news_left_google_add_1">
+					</div>
+					<div class="f_news_left_image">
+						<img src="/media/{{x.image}}">
+					</div>
+					<div class="f_news_left_full_news">
+						<h3>{{ x.news }}</h3>
+					</div>
+					<div class="f_news_middle_add_2">
+					</div>
+				</div>
+				{% endautoescape %}
+				{% endfor %}
+				<?php 
+					$magazine = "SELECT * FROM magazine WHERE status='1' ORDER BY date DESC";
+					$magazine_result = mysqli_query($db,$magazine);
+					$magazine_row = mysqli_fetch_array($magazine_result);
+				?>
+				<div class="f_news_middle_right">
+					<div class="f_top_news_right_1">
+						<h3>  मैगजीन  </h3>
+						<h4> {{ magazine.date }} </h4>
+						<img src="/media/{{ magazine.image }}">
+						<input type="button" id="magazine_button" value="ई-मैगज़ीन पढ़े ">
+					</div>
+					<div class="f_top_news_right_2">
+					</div>
+				</div>
+				
+			{% include 'footer.html' %}
+			</div>
+			<div class="news_right">
+			</div>
+	</div>
+</div>
+
+
+
+	<div class="main_mob">
+		{% include 'mobile_header.html' %}
+
+		{% for x in fullnews%}
+		{% autoescape off %}
+		<div class="f_news_top">
+			<h3> <span> {{ x.title }}: </span> {{ x.heading }} </h3>
+		</div>
+		<div class="f_news_top_time">
+			<div class="f_news_top_time_left">
+				<h3> {{ x.datetime }} </h3>
+			</div>
+			<div class="f_news_top_time_right">
+				<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-url="https://rajasthandiary.in">
+						<a class="a2a_button_whatsapp"></a>
+						<a class="a2a_button_facebook"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+			</div>
+		</div>
+		<div class="f_news_top_image">
+			<img src="{{ x.image|slice:"4:" }}">
+		</div>
+		<div class="f_news_left_mobile_add_1">
+		</div>
+		<div class="f_news_top_full_news">
+			<h3> {{ x.news }}</h3>
+		</div>
+		<div class="f_news_left_mobile_add_2">
+		</div>
+		{% endautoescape %}
+		{% endfor %}
+
+	</div>
+<script>
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "40%";
+}
+
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+
+</script>
+</body>
+</html>
